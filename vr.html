@@ -9,12 +9,17 @@
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
       <a-plane position="0 0 -4" rotation="-90 0 0" width="6" height="4" color="#7BC8A4"></a-plane>
       <a-sky color="#ECECEC"></a-sky>
-      <a-box id="moving_box" position="-1 2 -3" radius="10" color="purple"></a-box>
+      <a-box id="moving_box" position="-1 2 -3" radius="0.5" color="purple"></a-box>
     </a-scene>
-  <script>
-  const $moving_box = document.getElementById("moving_box");
-  const random = Math.random();
-  $moving_box.object3D.position.set(-1, (random)*2 + 1, -3);
-  </script>
+    <script>
+      const movingBox = document.getElementById("moving_box");
+      function moveBox() {
+        const posX = Math.random() * 4 - 4; 
+        const posY = Math.random() * 4 + 2; 
+        const posZ = Math.random() * 4 - 6; 
+        movingBox.setAttribute("position", `${posX} ${posY} ${posZ}`);
+      }
+      setInterval(moveBox, 500);
+    </script>
   </body>
 </html>
